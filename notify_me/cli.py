@@ -45,7 +45,7 @@ def cmd_check() -> None:
     due = get_due_reminders(reminders, now)
 
     for reminder in due:
-        if send_notification(reminder.title, reminder.message):
+        if send_notification(reminder.title, reminder.message, reminder.sound):
             mark_sent(reminder, now)
             print(f"Sent: {reminder.name}")
 
@@ -59,6 +59,7 @@ def cmd_list() -> None:
         print(f"[{r.name}]")
         print(f"  Title: {r.title}")
         print(f"  Message: {r.message}")
+        print(f"  Sound: {r.sound}")
         print(f"  Hours: {hours_str}")
         print()
 
